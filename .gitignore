@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+
+
+bin/
+obj/
+
+
+# Configs locales
+*.user
+*.suo
