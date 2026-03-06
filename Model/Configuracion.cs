@@ -29,7 +29,7 @@ namespace Model
             {
                 lock (_lock) 
                 {
-                    if (Instancia == null)
+                    if (_instancia == null)
                         _instancia = new ConfiguracionSistema();
                     return _instancia;
                 }

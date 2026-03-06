@@ -14,9 +14,11 @@ namespace WinFormsFinal.Observers
             Service.OnPrestamoConfirmado += EnviarEmail;
         }
 
-        public void EnviarEmail(Prestamo prestamo) 
+        public void EnviarEmail(Prestamo prestamo)
         {
-
+            MessageBox.Show(
+                $"Préstamo confirmado.\nTotal: ${prestamo.CostoTotal}\nDevuelve: {prestamo.FechaDevolucionEstimada:d}",
+                "Email enviado");
         }
     }
 }

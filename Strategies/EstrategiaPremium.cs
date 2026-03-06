@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsFinal.Strategies
 {
-    internal class EstrategiaPremium: IPrestamoStrategy
+    public class EstrategiaPremium: IPrestamoStrategy
     {
         public int ObtenerMaxDias() => 30;
         public int ObtenerMaxLibros() => 5;
