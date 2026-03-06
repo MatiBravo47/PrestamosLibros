@@ -11,6 +11,5 @@ namespace WinFormsFinal.Strategies
         public int ObtenerMaxDias() => 21;
         public int ObtenerMaxLibros() => 4;
         public decimal CalcularCosto(int cantidadLibros) => 200 * cantidadLibros;
-    {
     }
 }

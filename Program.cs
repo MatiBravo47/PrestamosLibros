@@ -1,3 +1,10 @@
+using Model;
+using WinFormsFinal.Controller;
+using WinFormsFinal.Model;
+using WinFormsFinal.Observers;
+
+
+
 namespace WinFormsFinal
 {
     internal static class Program
@@ -8,10 +15,32 @@ namespace WinFormsFinal
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+           
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            //Singleton
+            var config = ConfiguracionSistema.Instancia;
+
+            var repoSocios = new RepositorioJson<Socio>("socios.json");
+            var repoLibros = new RepositorioJson<Libro>("libros.json");
+            var repoPrestamos = new RepositorioJson<Prestamo>("prestamos.json");
+
+            //Services
+            var prestamoService = new PrestamoService(repoPrestamos, repoLibros);
+
+            //Observers 
+
+            var emailObserver = new EmailObserver();
+            emailObserver.Subscribirse(prestamoService);
+
+            var auditoriaObserver = new AuditoriaObserver();
+            auditoriaObserver.Subscribirse(prestamoService);
+
+            //Controller
+            var controller = new PrestamoController(repoSocios, repoLibros, prestamoService);
+
+            //Form
+            Application.Run(new Form1(controller));
         }
     }
 }

@@ -10,6 +10,6 @@ namespace WinFormsFinal.Strategies
     {
         int ObtenerMaxDias();
         int ObtenerMaxLibros();
-        decimal CalcularCosto();
+        decimal CalcularCosto(int cantidadLibros);
     }
 }
